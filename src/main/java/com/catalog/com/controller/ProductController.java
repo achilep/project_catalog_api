@@ -28,7 +28,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/here")
-	public String test() {
+	public String testForNow() {
 		return "working";
 	}
 	//save a new product
