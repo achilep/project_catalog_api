@@ -9,4 +9,6 @@ public interface ProductService {
 
 	ProductDTO editProduct(Product product);
 
+	void deleteProduct(int productid);
+
 }

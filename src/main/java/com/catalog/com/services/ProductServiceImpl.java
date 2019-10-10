@@ -2,6 +2,7 @@ package com.catalog.com.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 
 import com.catalog.com.dto.ProductDTO;
 import com.catalog.com.models.Product;
@@ -25,6 +26,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO editProduct(Product product) {
 		return repository.save(product).toDTO();
+	}
+
+	@Override
+	public void deleteProduct(int productid) {
+		repository.deleteById(productid);
 	}
 
 }
