@@ -69,4 +69,13 @@ public class ProductController {
 		
 		return response;
 	}
+	
+	//view a single product
+	@GetMapping("/{productid}")
+	public ResponseEntity<ProductDTO> getSingleProduct(@PathVariable("productid")int productid) {
+		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.retrieveProduct(productid), HttpStatus.OK);
+		
+		return response;
+	}
+	
 }

@@ -15,4 +15,6 @@ public interface ProductService {
 
 	List<ProductDTO> retrieveAllProducts();
 
+	ProductDTO retrieveProduct(int productid);
+
 }

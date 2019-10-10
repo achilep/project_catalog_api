@@ -43,4 +43,9 @@ public class ProductServiceImpl implements ProductService {
 		return products;
 	}
 
+	@Override
+	public ProductDTO retrieveProduct(int productid) {
+		return repository.findById(productid).get().toDTO();
+	}
+
 }

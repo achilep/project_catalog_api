@@ -1,5 +1,6 @@
 package com.catalog.com.dto;
 
+import com.catalog.com.models.Category;
 
 public class ProductDTO {
 
@@ -8,6 +9,8 @@ public class ProductDTO {
 	private String name;
 	private long quantity;
 	private long price;
+	
+	private Category category;
 	
 	public ProductDTO(int id, String name, long quantity, long price) {
 		this.id = id;
@@ -42,5 +45,13 @@ public class ProductDTO {
 	}
 	public void setPrice(long price) {
 		this.price = price;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
