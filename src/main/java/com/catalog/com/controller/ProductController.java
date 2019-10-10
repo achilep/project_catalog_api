@@ -36,10 +36,10 @@ public class ProductController {
 		return "working";
 	}
 	//save a new product
-	@PostMapping("/category/{category}")
-	public ResponseEntity<ProductDTO> saveProduct(@RequestBody Product product) {
+	@PostMapping("/category/{categoryid}")
+	public ResponseEntity<ProductDTO> saveProduct(@RequestBody Product product, @PathVariable("categoryid") int categoryid) {
 		
-		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.addProduct(product), 
+		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.addProduct(product, categoryid), 
 				HttpStatus.CREATED);
 		return response;
 	}

@@ -14,7 +14,7 @@ public class Product {
 	private long price;
 
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Category category; 
 
