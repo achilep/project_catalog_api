@@ -1,5 +1,7 @@
 package com.catalog.com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +59,14 @@ public class ProductController {
 		service.deleteProduct(productid);
 		
 		ResponseEntity<Object> response = new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+		return response;
+	}
+	
+	//view all products
+	@GetMapping("/")
+	public ResponseEntity<List<ProductDTO>> getAllProducts(){
+		ResponseEntity<List<ProductDTO>> response = new ResponseEntity<List<ProductDTO>>(service.retrieveAllProducts(), HttpStatus.OK);
+		
 		return response;
 	}
 }

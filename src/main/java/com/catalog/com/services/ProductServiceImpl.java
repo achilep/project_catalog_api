@@ -1,8 +1,10 @@
 package com.catalog.com.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.MultiValueMap;
 
 import com.catalog.com.dto.ProductDTO;
 import com.catalog.com.models.Product;
@@ -31,6 +33,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(int productid) {
 		repository.deleteById(productid);
+	}
+
+	@Override
+	public List<ProductDTO> retrieveAllProducts() {
+		List<ProductDTO> products = new ArrayList<ProductDTO>();
+		
+		repository.findAll().forEach(product -> products.add(product.toDTO()));
+		return products;
 	}
 
 }
