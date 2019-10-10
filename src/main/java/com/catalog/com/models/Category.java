@@ -1,4 +1,4 @@
-package com.catalog.models;
+package com.catalog.com.models;
 import java.util.List;
 
 import javax.persistence.*;
