@@ -9,9 +9,9 @@ public class Category {
 	private int id;
 	private String name;
 	
-	@OneToMany(mappedBy="category")
-	private List<Product> product;
-	public Category() {
+//	@OneToMany(mappedBy="category")
+//	private List<Product> product;
+    public Category() {
 		}
 	public Category(int id, String name) {
 		super();
@@ -20,12 +20,12 @@ public class Category {
 		
 	}
 	
-	public List<Product> getProduct() {
-		return product;
-	}
-	public void setProduct(List<Product> product) {
-		this.product = product;
-	}
+//	public List<Product> getProduct() {
+//		return product;
+//	}
+//	public void setProduct(List<Product> product) {
+//		this.product = product;
+//	}
 	public int getId() {
 		return id;
 	}
