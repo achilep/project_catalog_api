@@ -7,14 +7,14 @@ import com.catalog.com.models.Product;
 
 public interface ProductService {
 
-	ProductDTO addProduct(Product product);
-
-	ProductDTO editProduct(Product product);
-
 	void deleteProduct(int productid);
 
 	List<ProductDTO> retrieveAllProducts();
 
 	ProductDTO retrieveProduct(int productid);
+
+	ProductDTO addProduct(Product product, int categoryid);
+
+	ProductDTO editProduct(Product product, int productid, int categoryid);
 
 }

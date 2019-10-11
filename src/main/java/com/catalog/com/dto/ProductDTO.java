@@ -19,9 +19,6 @@ public class ProductDTO {
 		this.price = price;
 	}
 	
-	public ProductDTO() {
-	}
-	
 	public int getId() {
 		return id;
 	}
