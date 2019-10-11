@@ -31,23 +31,21 @@ public class ProductController {
 		this.service=service;
 	}
 
-	@GetMapping("/here")
-	public String testForNow() {
-		return "working";
-	}
 	//save a new product
 	@PostMapping("/category/{categoryid}")
 	public ResponseEntity<ProductDTO> saveProduct(@RequestBody Product product, @PathVariable("categoryid") int categoryid) {
 		
 		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.addProduct(product, categoryid), 
 				HttpStatus.CREATED);
+		
 		return response;
 	}
 	
 	//modify an existing product
 	@PutMapping("/{productid}/category/{categoryid}")
-	public ResponseEntity<ProductDTO> editProduct(@RequestBody Product product) {
-		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.editProduct(product),
+	public ResponseEntity<ProductDTO> editProduct(@RequestBody Product product,
+			@PathVariable("productid") int productid, @PathVariable("categoryid") int categoryid) {
+		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.editProduct(product, productid, categoryid),
 				HttpStatus.NO_CONTENT);
 		
 		return response;

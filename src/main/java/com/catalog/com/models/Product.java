@@ -7,7 +7,7 @@ import com.catalog.com.dto.ProductDTO;
 @Entity
 public class Product {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;	
 	private String name;
 	private long quantity;
@@ -69,8 +69,7 @@ public class Product {
 	}
 
 
-	public Product() {
-		
+	public Product() {	
 	}
 
 	public ProductDTO toDTO() {

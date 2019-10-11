@@ -31,7 +31,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductDTO editProduct(Product product) {
+	public ProductDTO editProduct(Product product, int productid, int categoryid) {
+		
+		product.setCategory(catRepo.findById(categoryid).get());
+		product.setId(productid);
+		
 		return repository.save(product).toDTO();
 	}
 
