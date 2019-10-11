@@ -48,13 +48,26 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductDTO> retrieveAllProducts() {
 		List<ProductDTO> products = new ArrayList<ProductDTO>();
 		
-		repository.findAll().forEach(product -> products.add(product.toDTO()));
+		repository.findAll().forEach(product -> {
+			products.add(product.toDTO());
+		});
 		return products;
 	}
 
 	@Override
+	public List<Product> retrieveProducts() {
+		List<Product> products = new ArrayList<Product>();
+		
+		repository.findAll().forEach(product -> {
+			products.add(product);
+		});
+		return products;
+	}
+	
+	@Override
 	public ProductDTO retrieveProduct(int productid) {
 		return repository.findById(productid).get().toDTO();
 	}
+
 
 }

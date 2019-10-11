@@ -19,6 +19,14 @@ public class ProductDTO {
 		this.price = price;
 	}
 	
+	public ProductDTO(int id, String name, long quantity, long price, Category category) {
+		this.id = id;
+		this.name = name;
+		this.quantity = quantity;
+		this.price = price;
+		this.category = category;
+	}
+
 	public int getId() {
 		return id;
 	}
