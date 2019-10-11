@@ -18,6 +18,4 @@ public interface ProductService {
 
 	ProductDTO editProduct(Product product, int productid, int categoryid);
 
-	List<Product> retrieveProducts();
-
 }
