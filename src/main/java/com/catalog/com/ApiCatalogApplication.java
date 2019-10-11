@@ -9,15 +9,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableSwagger2
 public class ApiCatalogApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiCatalogApplication.class, args);
-	}
-
-	@Bean
-	public Docket getDocket() {
-		return new Docket(DocumentationType.SWAGGER_2);
 	}
 }
