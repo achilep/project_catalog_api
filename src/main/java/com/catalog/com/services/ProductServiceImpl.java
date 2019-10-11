@@ -27,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductDTO addProduct(Product product, int categoryid) {
 		
 		product.setCategory(catRepo.findById(categoryid).get());
-		return repository.save(product).toDTO();
+		return repository.save(product).toD();
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
 		product.setCategory(catRepo.findById(categoryid).get());
 		product.setId(productid);
 		
-		return repository.save(product).toDTO();
+		return repository.save(product).toD();
 	}
 
 	@Override
@@ -48,13 +48,16 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductDTO> retrieveAllProducts() {
 		List<ProductDTO> products = new ArrayList<ProductDTO>();
 		
-		repository.findAll().forEach(product -> products.add(product.toDTO()));
+		repository.findAll().forEach(product -> {
+			products.add(product.toD());
+		});
 		return products;
 	}
-
+	
 	@Override
 	public ProductDTO retrieveProduct(int productid) {
-		return repository.findById(productid).get().toDTO();
+		return repository.findById(productid).get().toD();
 	}
+
 
 }

@@ -12,6 +12,7 @@ public interface ProductService {
 	List<ProductDTO> retrieveAllProducts();
 
 	ProductDTO retrieveProduct(int productid);
+	
 
 	ProductDTO addProduct(Product product, int categoryid);
 

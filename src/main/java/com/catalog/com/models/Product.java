@@ -75,5 +75,8 @@ public class Product {
 	public ProductDTO toDTO() {
 		return new ProductDTO(getId(), getName(), getQuantity(), getPrice());
 	}
+	public ProductDTO toD() {
+		return new ProductDTO(getId(), getName(), getQuantity(), getPrice(), getCategory());
+	}
 	
 }
