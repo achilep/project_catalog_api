@@ -11,7 +11,7 @@
 	<groupId>com.catalog</groupId>
 	<artifactId>API_CATALOG</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>API_CATALOG</name>
 	<description>app that handle a product and the category of a catalog</description>
 
