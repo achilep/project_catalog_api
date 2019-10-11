@@ -8,17 +8,16 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private String description;
 	
 	@OneToMany(mappedBy="category")
 	private List<Product> product;
 	public Category() {
 		}
-	public Category(int id, String name, String description) {
+	public Category(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.description = description;
+		
 	}
 	
 	public List<Product> getProduct() {
@@ -40,15 +39,10 @@ public class Category {
 		this.name = name;
 	}
 	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "Category [id=" + id + ", name=" + name + "]";
 	}
 	
 	
