@@ -20,7 +20,7 @@ import java.util.List;
 public class CategoryController {
 	
 	
-	CategoryServiceImple categoryservice;
+	private CategoryServiceImple categoryservice;
 	@Autowired
 	public CategoryController(CategoryServiceImple categoryservice) {
 		super();
@@ -48,9 +48,10 @@ public class CategoryController {
         categoryservice.creatcategory(categorydto);
     }
 //	to update a particular categrory
-	@PutMapping("/category/{categoryId")
+	@PutMapping("/category/{categoryId}")
     public void updatecategory(@PathVariable int categoryId,@RequestBody CategoryDTO categorydto){
         categoryservice.updatecategory(categoryId,categorydto);
+        
     }
 
 }

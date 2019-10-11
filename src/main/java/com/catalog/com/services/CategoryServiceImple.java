@@ -5,11 +5,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.catalog.com.dto.CategoryDTO;
 import com.catalog.com.models.Category;
 import com.catalog.com.repositories.CategoryRepository;
-
+@Service
 public class CategoryServiceImple implements CategoryInterface {
 	
 	
@@ -61,6 +62,14 @@ public class CategoryServiceImple implements CategoryInterface {
 	@Override
 	public void updatecategory( int categoryId, CategoryDTO categorydto){
 		
+		Category category= categoryrepos.findById(categoryId).get();
+		category.setName(categorydto.getName());
+		Category categoryupdate=categoryrepos.save(category);
+		
+//		CategoryDTO categorydto=new CategoryDTO();
+//		categorydto.setId(category.get().getId());
+//		categorydto.setName(category.get().getName());
+//		
 	}
 
 

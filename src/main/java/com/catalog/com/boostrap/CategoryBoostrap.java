@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Component;
 
-import com.catalog.com.dto.CategoryDTO;
+import com.catalog.com.models.Category;
 import com.catalog.com.repositories.CategoryRepository;
 
 @Component
@@ -25,10 +25,10 @@ public class CategoryBoostrap implements ApplicationListener<ContextRefreshedEve
     private void initData(int count) {
        for(int i = 0; i < count; i++){
     	   String name = "aladin " + i;
-            CategoryDTO categorydto = new CategoryDTO();
-            categorydto.setName(name);
+            Category category = new Category();
+            category.setName(name);
             
-             categoryrepos.save(categorydto);
+             categoryrepos.save(category);
             
        }   
     }
