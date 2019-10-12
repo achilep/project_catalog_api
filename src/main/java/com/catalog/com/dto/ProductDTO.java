@@ -27,6 +27,10 @@ public class ProductDTO {
 		this.category = category;
 	}
 
+	public ProductDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}

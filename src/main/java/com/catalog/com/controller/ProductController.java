@@ -45,8 +45,10 @@ public class ProductController {
 	@PutMapping("/{productid}/category/{categoryid}")
 	public ResponseEntity<ProductDTO> editProduct(@RequestBody Product product,
 			@PathVariable("productid") int productid, @PathVariable("categoryid") int categoryid) {
+		
 		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.editProduct(product, productid, categoryid),
 				HttpStatus.NO_CONTENT);
+		
 		
 		return response;
 	}
@@ -64,10 +66,6 @@ public class ProductController {
 	@GetMapping("/")
 	public ResponseEntity<List<ProductDTO>> getAllProducts(){
 		ResponseEntity<List<ProductDTO>> response = new ResponseEntity<List<ProductDTO>>(service.retrieveAllProducts(), HttpStatus.OK);
-		
-
-		//ResponseEntity<List<Product>> response = new ResponseEntity<List<Product>>
-		//(service.retrieveProducts(), HttpStatus.OK);
 		
 		return response;
 	}
