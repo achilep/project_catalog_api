@@ -83,9 +83,6 @@ public class ProductServiceImpl implements ProductService {
 
 		Optional<Product> result = repository.findById(productid);
 
-		if (result.isEmpty())
-			throw new ProductNotFoundException("Missing product, id: " + productid);
-
 		return result.get().toD();
 	}
 
