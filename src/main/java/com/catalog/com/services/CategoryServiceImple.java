@@ -101,7 +101,7 @@ public class CategoryServiceImple implements CategoryInterface {
 	}
 	@Override
 	public void updatecategory( int categoryId, CategoryDTO categorydto){
-		URI location;
+		//URI location;
 		
 		Category category= categoryrepos.findById(categoryId).get();
 //		if(!category.isPresent()) {
