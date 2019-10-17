@@ -3,6 +3,8 @@ package com.catalog.com.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.hateoas.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -14,7 +16,8 @@ public interface CategoryInterface {
 	List<CategoryDTO>getallcategroy();
 	CategoryDTO getparticularcategory(int id);
 	void deletecategory(int categoryId);
-	void creatcategory(CategoryDTO categorydto);
+	ResponseEntity<Object> creatcategory(CategoryDTO categorydto);
 	void updatecategory( int categoryId, CategoryDTO categorydto);
+	//CategoryDTO getparticularcategor(int categoryId);
 
 }
