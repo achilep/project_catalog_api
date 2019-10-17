@@ -54,10 +54,6 @@ public class CategoryController {
         return resource;
     }
 	
-//	@GetMapping("/category/{categoryId}")
-//    public ResponseEntity<Object> getparticularcategory(@PathVariable int categoryId){
-//        return ResponseEntity.ok(categoryservice.getparticularcategory(categoryId));
-//    }
 	
 //	to delete a particular category
 	@DeleteMapping("/category/{categoryId}")
@@ -65,7 +61,7 @@ public class CategoryController {
         categoryservice.deletecategory(categoryId);
     }
 //	to create a category
-	@ResponseBody
+	
 	@PostMapping("/category")
     public ResponseEntity<Object> creatcategory(@RequestBody CategoryDTO categorydto){
 		return categoryservice.creatcategory(categorydto);
