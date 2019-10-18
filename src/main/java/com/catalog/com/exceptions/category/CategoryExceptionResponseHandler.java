@@ -16,17 +16,17 @@ import com.catalog.com.exceptions.CatalogException;
 @ControllerAdvice
 @RestController
 public class CategoryExceptionResponseHandler extends ResponseEntityExceptionHandler {
-	@ExceptionHandler(Exception.class)
+	@ExceptionHandler(UncaughtCategory.class)
 	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
-		CatalogException exceptionResponse = new CatalogException(new Date(), ex.getMessage(),
-				request.getDescription(false));
+		CatalogException exceptionResponse = new CatalogException(new Date(),"somethin went wrong"
+				, ex.getMessage());
 		return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@ExceptionHandler(CategoryNotFound.class)
 	public final ResponseEntity<Object> handleCategoryNotFoundException(CategoryNotFound ex, WebRequest request) {
-		CatalogException exceptionResponse = new CatalogException(new Date(), ex.getMessage(),
-				request.getDescription(false));
+		CatalogException exceptionResponse = new CatalogException(new Date(),
+				"category not found", ex.getMessage());
 		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
 	}
 	
