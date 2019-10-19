@@ -16,8 +16,13 @@ Api which manages products and categories
 1.	Clone the repository
 2.  Import the project from the clone repository into an IDE equiped with STS.
 3.	The application can then be run (as a spring boot app).
+
 	
 	It runs on the default port (8080), that is localhost:8080 is the root
+	
+#### Alternatively, the api can be tested online by accessing the link
+
+		 [Online Hosted api](https://sheltered-falls-45349.herokuapp.com/swagger-ui.html, "product_catalog_api")
 
 ## Understanding the api
 
