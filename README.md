@@ -22,7 +22,7 @@ Api which manages products and categories
 	
 #### Alternatively, the api can be tested online by accessing the link
 
-[ONLINE HOSTED API]("https://sheltered-falls-45349.herokuapp.com/swagger-ui.html)
+[ONLINE HOSTED API]("https://sheltered-falls-45349.herokuapp.com/swagger-ui.html")
 
 ## Understanding the api
 
