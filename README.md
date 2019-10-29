@@ -2,7 +2,7 @@
 
 Api which manages products and categories
 
-	This is a product catalog api. It is written in java using the spring boot framework.
+	Product catalog api written in java, using the spring boot framework.
 	The repository has two branches:
 [master branch](https://github.com/achilep/project_catalog_api): The basic version of the api, in which products have no images 
 	representing them
