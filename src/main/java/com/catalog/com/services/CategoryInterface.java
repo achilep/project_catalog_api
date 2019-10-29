@@ -1,15 +1,11 @@
 package com.catalog.com.services;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.hateoas.Resource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.catalog.com.dto.CategoryDTO;
-import com.catalog.com.models.Category;
+
 
 public interface CategoryInterface {
 	  
