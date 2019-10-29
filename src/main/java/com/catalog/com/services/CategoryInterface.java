@@ -18,6 +18,5 @@ public interface CategoryInterface {
 	void deletecategory(int categoryId);
 	ResponseEntity<Object> creatcategory(CategoryDTO categorydto);
 	void updatecategory( int categoryId, CategoryDTO categorydto);
-	//CategoryDTO getparticularcategor(int categoryId);
-
+	
 }
