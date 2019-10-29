@@ -3,12 +3,9 @@
 Api which manages products and categories
 
 	This is a product catalog api. It is written in java using the spring boot framework.
-	It has two main microservices; a product service (product_service) and a category service(category_service). 
-	As each name implies the microservices respectively handle operations on products and categories. 
-	Also, there is a naming server for the api (the naming server is a eureka naming server).
 	
 ## Getting started
-1.  Have spring tool suite(STS) ide or sts integrated into a java ide of your choice
+1.  Have spring tool suite(STS) ide or sts integrated into a java ide of your choice.
 2.	Optionally have access to internet connection so as to download any dependencies on-the-go if needed.
 
 ## Running the api
@@ -22,7 +19,7 @@ Api which manages products and categories
 	
 #### Alternatively, the api can be tested online by accessing the link
 
-[ONLINE HOSTED API](https://sheltered-falls-45349.herokuapp.com/swagger-ui.html)
+[ONLINE HOSTED API](https://shielded-crag-51074.herokuapp.com/swagger-ui.html)
 
 ## Understanding the api
 
