@@ -23,14 +23,14 @@ public class ProductBootstrap implements ApplicationListener<ContextRefreshedEve
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-		initData(3);
+		initData(2);
 	}
 
 	private void initData(int count) {
 
-		for (int i = 1; i < count; i++) {
+		for (int i = 1; i <= count; i++) {
 			Product product = new Product();
-			String name = "name" + i;
+			String name = "Product:" + i;
 			long quantity = i;
 			long price = i * 100;
 
