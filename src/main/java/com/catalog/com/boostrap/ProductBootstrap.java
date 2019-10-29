@@ -40,7 +40,7 @@ public class ProductBootstrap implements ApplicationListener<ContextRefreshedEve
 			product.setPrice(price);
 			product.setQuantity(quantity);
 			product.setCategory(category);
-			product.setImage("https://product2catalog.herokuapp.com/api/products/downloadFile/product"+i+".jpeg");
+			product.setImage("https://shielded-crag-51074.herokuapp.com/api/products/downloadFile/product"+i+".jpeg");
 
 			productRepository.save(product);
 		}
