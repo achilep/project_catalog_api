@@ -22,17 +22,21 @@ import com.catalog.com.exceptions.category.CategoryNotFound;
 import com.catalog.com.exceptions.category.UncaughtCategory;
 import com.catalog.com.exceptions.category.CategoryNotDelete;
 import com.catalog.com.models.Category;
+import com.catalog.com.models.Product;
 import com.catalog.com.repositories.CategoryRepository;
+import com.catalog.com.repositories.ProductRepository;
 @Service
 public class CategoryServiceImple implements CategoryInterface {
 	
 	
     private CategoryRepository categoryrepos;
+    private ProductRepository productrepository;
     
     @Autowired
-    public CategoryServiceImple(CategoryRepository categoryrepos) {
+    public CategoryServiceImple(CategoryRepository categoryrepos,ProductRepository productrepository) {
 		super();
 		this.categoryrepos = categoryrepos;
+		this.productrepository= productrepository;
 	}
 
 
@@ -45,9 +49,10 @@ public class CategoryServiceImple implements CategoryInterface {
 			for(Category category : categorys) {
 			    CategoryDTO categorytdo = new CategoryDTO();
 			    categorytdo.setId(category.getId());
-			    
+			    List <Product> products= productrepository.findByCategoryId(category.getId());
 			    categorytdo.setName(category.getName());
 			    
+			    categorytdo.setProducts(products);
 			    categorydtos.add(categorytdo);
 			}
 		 } catch (Exception e) {
@@ -98,7 +103,6 @@ public class CategoryServiceImple implements CategoryInterface {
 					      .toUri();
 			} catch (Exception e) {
 				throw new UncaughtCategory(" category no add because of -" + e);
-				// TODO Auto-generated catch block
 			
 			}
 
@@ -109,24 +113,16 @@ public class CategoryServiceImple implements CategoryInterface {
 	}
 	@Override
 	public void updatecategory( int categoryId, CategoryDTO categorydto){
-		//URI location;
 		
 		try {
 			Category category= categoryrepos.findById(categoryId).get();
-//		if(!category.isPresent()) {
-//			throw new CategoryNotFound("category of id-" + categoryId+"cannot be found");
-//		}
 			category.setName(categorydto.getName());
 			Category categoryupdate=categoryrepos.save(category);
 		} catch (Exception e) {
 			throw new UncaughtCategory(" category no update because of -" + e);
-			// TODO Auto-generated catch block
 			
 		}
 		
-//		CategoryDTO categorydto=new CategoryDTO();
-//		categorydto.setId(category.get().getId());
-//		categorydto.setName(category.get().getName());
     	 
 
 
