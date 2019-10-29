@@ -3,6 +3,8 @@ import javax.persistence.*;
 
 import com.catalog.com.dto.ProductDTO;
 
+import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
 public class Product {
@@ -12,6 +14,7 @@ public class Product {
 	private String name;
 	private long quantity;
 	private long price;
+	private String image;
 
 
 	@ManyToOne
@@ -76,7 +79,17 @@ public class Product {
 		return new ProductDTO(getId(), getName(), getQuantity(), getPrice());
 	}
 	public ProductDTO toD() {
-		return new ProductDTO(getId(), getName(), getQuantity(), getPrice(), getCategory());
+		return new ProductDTO(getId(), getName(), getQuantity(), getPrice(), getCategory(), getImage());
+	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

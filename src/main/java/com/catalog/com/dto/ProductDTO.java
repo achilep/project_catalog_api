@@ -1,5 +1,6 @@
 package com.catalog.com.dto;
 
+import com.catalog.com.imagemanipulation.service.ProductDTOPostRequest;
 import com.catalog.com.models.Category;
 
 public class ProductDTO {
@@ -9,6 +10,7 @@ public class ProductDTO {
 	private String name;
 	private long quantity;
 	private long price;
+	private String image;
 	
 	private Category category;
 	
@@ -29,6 +31,15 @@ public class ProductDTO {
 
 	public ProductDTO() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public ProductDTO(int id, String name, long quantity, long price, Category category, String image) {
+		this.id = id;
+		this.name = name;
+		this.quantity = quantity;
+		this.price = price;
+		this.category = category;
+		this.image = image;
 	}
 
 	public int getId() {
@@ -62,5 +73,17 @@ public class ProductDTO {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public ProductDTOPostRequest toPostDTO() {
+		return new ProductDTOPostRequest(getName(), getQuantity(), getPrice());
 	}
 }
