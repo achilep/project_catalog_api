@@ -3,7 +3,7 @@ package com.catalog.com.dto;
 import com.catalog.com.imagemanipulation.service.ProductDTOPostRequest;
 import com.catalog.com.models.Category;
 
-public class ProductDTO {
+public class StandardProductDTO {
 
 	
 	private int id;
@@ -14,14 +14,14 @@ public class ProductDTO {
 	
 	private Category category;
 	
-	public ProductDTO(int id, String name, long quantity, long price) {
+	public StandardProductDTO(int id, String name, long quantity, long price) {
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;
 		this.price = price;
 	}
 	
-	public ProductDTO(int id, String name, long quantity, long price, Category category) {
+	public StandardProductDTO(int id, String name, long quantity, long price, Category category) {
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;
@@ -29,11 +29,11 @@ public class ProductDTO {
 		this.category = category;
 	}
 
-	public ProductDTO() {
+	public StandardProductDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductDTO(int id, String name, long quantity, long price, Category category, String image) {
+	public StandardProductDTO(int id, String name, long quantity, long price, Category category, String image) {
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;

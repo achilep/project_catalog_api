@@ -42,7 +42,7 @@ public class ImageManipulationService {
 		}
 	}
 
-	public String storeFile(MultipartFile file, int id) {
+	private String storeFile(MultipartFile file, int id) {
 		// Normalize file name
 		
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -110,9 +110,11 @@ public class ImageManipulationService {
             .body(resource);
     }
 
-	public String getDownloadUrlFor(String image) {
+	public String getDownloadUrlFor(MultipartFile file, int productid) {
+		
+		String image = this.storeFile(file, productid);
 		return  ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/api/products/downloadFile/")
+				.path("/api/products/load/")
 				.path(image).toUriString();
 	}
 

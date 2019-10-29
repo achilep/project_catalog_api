@@ -1,7 +1,7 @@
 package com.catalog.com.models;
 import javax.persistence.*;
 
-import com.catalog.com.dto.ProductDTO;
+import com.catalog.com.dto.StandardProductDTO;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -75,11 +75,8 @@ public class Product {
 	public Product() {	
 	}
 
-	public ProductDTO toDTO() {
-		return new ProductDTO(getId(), getName(), getQuantity(), getPrice());
-	}
-	public ProductDTO toD() {
-		return new ProductDTO(getId(), getName(), getQuantity(), getPrice(), getCategory(), getImage());
+	public StandardProductDTO toStandardProductDTO() {
+		return new StandardProductDTO(getId(), getName(), getQuantity(), getPrice(), getCategory(), getImage());
 	}
 
 

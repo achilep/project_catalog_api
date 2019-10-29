@@ -2,20 +2,22 @@ package com.catalog.com.services;
 
 import java.util.List;
 
-import com.catalog.com.dto.ProductDTO;
+import com.catalog.com.dto.StandardProductDTO;
 import com.catalog.com.models.Product;
 
 public interface ProductService {
 
 	void deleteProduct(int productid);
 
-	List<ProductDTO> retrieveAllProducts();
+	List<StandardProductDTO> retrieveAllProducts();
 
-	ProductDTO retrieveProduct(int productid);
+	StandardProductDTO retrieveProduct(int productid);
 	
 
-	ProductDTO addProduct(Product product, int categoryid);
+	StandardProductDTO addProduct(Product product, int categoryid);
 
-	ProductDTO editProduct(Product product, int productid, int categoryid);
+	StandardProductDTO editProduct(Product product, int productid, int categoryid);
+
+	StandardProductDTO editProduct(int productid, String imageLink);
 
 }

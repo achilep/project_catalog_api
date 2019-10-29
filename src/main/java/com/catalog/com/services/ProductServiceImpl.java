@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.catalog.com.dto.ProductDTO;
+import com.catalog.com.dto.StandardProductDTO;
 import com.catalog.com.exceptions.product.ProductNotDeletedException;
 import com.catalog.com.exceptions.product.ProductNotFoundException;
 import com.catalog.com.exceptions.product.UncaughtProductException;
@@ -28,15 +28,16 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductDTO addProduct(Product product, int categoryid) {
+	public StandardProductDTO addProduct(Product product, int categoryid) {
 
 		product.setCategory(catRepo.findById(categoryid).get());
-		return repository.save(product).toD();
+		return repository.save(product).toStandardProductDTO();
 	}
 
 	@Override
-	public ProductDTO editProduct(Product product, int productid, int categoryid) {
+	public StandardProductDTO editProduct(Product product, int productid, int categoryid) {
 		// verify that the given product exists
+		
 		if (!repository.existsById(productid))
 			throw new ProductNotFoundException("Product id: " + productid); // if not exists, throw new product not
 																			// found exception
@@ -49,8 +50,9 @@ public class ProductServiceImpl implements ProductService {
 
 		product.setCategory(catRepo.findById(categoryid).get()); // if all is well, set the productid and category id
 		product.setId(productid);
+		product.setImage(repository.findById(productid).get().getImage());
 
-		return repository.save(product).toD(); // effect the modification
+		return repository.save(product).toStandardProductDTO(); // effect the modification
 	}
 
 	@Override
@@ -68,22 +70,37 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> retrieveAllProducts() {
-		List<ProductDTO> products = new ArrayList<ProductDTO>();
+	public List<StandardProductDTO> retrieveAllProducts() {
+		List<StandardProductDTO> products = new ArrayList<StandardProductDTO>();
 
 		//for each retrieved product, add to a listof products to be returned
 		repository.findAll().forEach(product -> {
-			products.add(product.toD());
+			products.add(product.toStandardProductDTO());
 		});
 		return products;
 	}
 
 	@Override
-	public ProductDTO retrieveProduct(int productid) {
+	public StandardProductDTO retrieveProduct(int productid) {
 
 		Optional<Product> result = repository.findById(productid);
 
-		return result.get().toD();
+		return result.get().toStandardProductDTO();
+	}
+
+	@Override
+	public StandardProductDTO editProduct(int productid, String imageLink) {
+		//verify that product exists
+		if(repository.existsById(productid)) {
+			Product product = repository.findById(productid).get();
+			
+			product.setImage(imageLink);
+			
+			return repository.save(product).toStandardProductDTO();
+		}
+		//if the product does not exist, throw product not found exception
+		throw new ProductNotFoundException(String.format("Product id: %d", productid));
+	
 	}
 
 }

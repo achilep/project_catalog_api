@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.catalog.com.dto.ProductDTO;
+import com.catalog.com.dto.StandardProductDTO;
 import com.catalog.com.imagemanipulation.service.ImageManipulationService;
 import com.catalog.com.imagemanipulation.service.ProductDTOPostRequest;
 import com.catalog.com.models.Product;
@@ -42,8 +42,8 @@ public class ProductController {
 		this.service = service;
 	}
 
-	@GetMapping("/downloadFile/{fileName:.+}")
-	public ResponseEntity<Resource> loadImage(@PathVariable String fileName, HttpServletRequest request) {
+	@GetMapping("/load/{fileName:.+}")
+	private ResponseEntity<Resource> loadImage(@PathVariable String fileName, HttpServletRequest request) {
 		return fileStorageService.downloadFile(fileName, request);
 	}
 	
@@ -62,11 +62,10 @@ public class ProductController {
 		product.setPrice(price);
 
 		// save the product (without the image)
-		ProductDTO result = service.addProduct(product, categoryid);
+		StandardProductDTO result = service.addProduct(product, categoryid);
 		// save the corresponding image and retrieve its download url
-		String image = fileStorageService.storeFile(file, result.getId());
 
-		String fileDownloadUri = fileStorageService.getDownloadUrlFor(image);
+		String fileDownloadUri = fileStorageService.getDownloadUrlFor(file, result.getId());
 
 		product.setImage(fileDownloadUri);
 		result = service.editProduct(product, product.getId(), categoryid);
@@ -78,15 +77,28 @@ public class ProductController {
 
 	// modify an existing product
 	@PutMapping("/{productid}/category/{categoryid}")
-	public ResponseEntity<ProductDTO> editProduct(@RequestBody Product product,
+	public ResponseEntity<StandardProductDTO> editProduct(@RequestBody Product product,
 			@PathVariable("productid") int productid, @PathVariable("categoryid") int categoryid) {
 
-		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(
-				service.editProduct(product, productid, categoryid), HttpStatus.NO_CONTENT);
+		ResponseEntity<StandardProductDTO> response = new ResponseEntity<StandardProductDTO>(
+				service.editProduct(product, productid, categoryid), HttpStatus.CREATED);
 
 		return response;
 	}
 
+	//modify an existing product's image
+	@PutMapping("/{productid}")
+	public ResponseEntity<StandardProductDTO> editProductImage(@RequestPart MultipartFile productimage,
+			@PathVariable("productid") int productid) {
+
+		String imageLink = fileStorageService.getDownloadUrlFor(productimage, productid);
+		
+		ResponseEntity<StandardProductDTO> response = new ResponseEntity<StandardProductDTO>(
+				service.editProduct(productid, imageLink), HttpStatus.CREATED);
+
+		return response;
+	}
+	
 	// delete a product
 	@DeleteMapping("/{productid}")
 	public ResponseEntity<Object> deleteProduct(@PathVariable("productid") int productid) {
@@ -98,8 +110,8 @@ public class ProductController {
 
 	// view all products
 	@GetMapping("/")
-	public ResponseEntity<List<ProductDTO>> getAllProducts() {
-		ResponseEntity<List<ProductDTO>> response = new ResponseEntity<List<ProductDTO>>(service.retrieveAllProducts(),
+	public ResponseEntity<List<StandardProductDTO>> getAllProducts() {
+		ResponseEntity<List<StandardProductDTO>> response = new ResponseEntity<List<StandardProductDTO>>(service.retrieveAllProducts(),
 				HttpStatus.OK);
 
 		return response;
@@ -107,8 +119,11 @@ public class ProductController {
 
 	// view a single product
 	@GetMapping("/{productid}")
-	public ResponseEntity<ProductDTO> getSingleProduct(@PathVariable("productid") int productid) {
-		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.retrieveProduct(productid),
+	public ResponseEntity<StandardProductDTO> getSingleProduct(@PathVariable("productid") int productid) {
+		
+		
+		
+		ResponseEntity<StandardProductDTO> response = new ResponseEntity<StandardProductDTO>(service.retrieveProduct(productid),
 				HttpStatus.OK);
 
 		return response;
