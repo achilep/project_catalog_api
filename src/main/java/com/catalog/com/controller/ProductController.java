@@ -47,7 +47,7 @@ public class ProductController {
 			@PathVariable("productid") int productid, @PathVariable("categoryid") int categoryid) {
 		
 		ResponseEntity<ProductDTO> response = new ResponseEntity<ProductDTO>(service.editProduct(product, productid, categoryid),
-				HttpStatus.NO_CONTENT);
+				HttpStatus.CREATED);
 		
 		
 		return response;
