@@ -50,7 +50,6 @@ public class CategoryServiceImple implements CategoryInterface {
 			throw new UncaughtCategory("no category found because of -" + e);
 
 		}
-
 		return categorydtos;
 	}
 
