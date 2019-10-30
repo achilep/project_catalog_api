@@ -36,6 +36,7 @@ public class CategoryController {
 		super();
 		this.categoryservice = categoryservice;
 	}
+	
 //	to get all the category
 
 	@GetMapping("/category")
